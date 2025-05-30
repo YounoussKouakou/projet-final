@@ -16,7 +16,7 @@ const Dashboard = () => {
         {/* Carte statistique 2 */}
         <div className="bg-white rounded-lg shadow-md p-6">
           <h2 className="text-xl font-semibold mb-2">Revenus</h2>
-          <p className="text-3xl font-bold text-green-600">€45,678</p>
+          <p className="text-3xl font-bold text-green-600">Fcfa 45,678</p>
           <p className="text-gray-500 mt-2">+8% ce mois</p>
         </div>
 
@@ -45,7 +45,7 @@ const Dashboard = () => {
               <tr>
                 <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">2024-03-20</td>
                 <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">Nouvelle commande</td>
-                <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">Jean Dupont</td>
+                <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">Traoré Ali</td>
                 <td className="px-6 py-4 whitespace-nowrap">
                   <span className="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">
                     Complété
@@ -55,7 +55,7 @@ const Dashboard = () => {
               <tr>
                 <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">2024-03-19</td>
                 <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">Mise à jour profil</td>
-                <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">Marie Martin</td>
+                <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">Coulibaly Issa</td>
                 <td className="px-6 py-4 whitespace-nowrap">
                   <span className="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-blue-100 text-blue-800">
                     En cours
