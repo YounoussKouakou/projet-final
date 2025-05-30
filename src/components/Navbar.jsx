@@ -3,7 +3,7 @@ import { useState } from 'react'
 
 function Navbar() {
   // TODO: Replace with actual auth state management
-  const [isAuthenticated, setIsAuthenticated] = useState(false)
+  const [isAuthenticated, setIsAuthenticated] = useState(true) // Temporairement mis à true pour le test
 
   const handleLogout = () => {
     setIsAuthenticated(false)
@@ -26,12 +26,20 @@ function Navbar() {
               Accueil
             </Link>
             {isAuthenticated && (
-              <Link
-                to="/reservations"
-                className="text-gray-700 hover:text-primary px-3 py-2 rounded-md"
-              >
-                Mes Réservations
-              </Link>
+              <>
+                <Link
+                  to="/reservations"
+                  className="text-gray-700 hover:text-primary px-3 py-2 rounded-md"
+                >
+                  Mes Réservations
+                </Link>
+                <Link
+                  to="/dashboard"
+                  className="text-gray-700 hover:text-primary px-3 py-2 rounded-md"
+                >
+                  Tableau de bord
+                </Link>
+              </>
             )}
             {isAuthenticated ? (
               <button
