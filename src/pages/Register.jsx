@@ -1,35 +1,45 @@
-import { useState } from 'react'
-import { Link } from 'react-router-dom'
+import { useState } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
+import { registerUser } from '../services/authMiddleware';
 
 function Register() {
   const [formData, setFormData] = useState({
-    name: '',
+    username: '',
     email: '',
     password: '',
     confirmPassword: '',
-  })
-  const [error, setError] = useState('')
+  });
+  const [error, setError] = useState('');
+  const navigate = useNavigate();
 
   const validateForm = () => {
     if (formData.password.length < 6) {
-      setError('Le mot de passe doit contenir au moins 6 caractères')
-      return false
+      setError('Le mot de passe doit contenir au moins 6 caractères');
+      return false;
     }
     if (formData.password !== formData.confirmPassword) {
-      setError('Les mots de passe ne correspondent pas')
-      return false
+      setError('Les mots de passe ne correspondent pas');
+      return false;
     }
-    setError('')
-    return true
-  }
+    setError('');
+    return true;
+  };
 
-  const handleSubmit = (e) => {
-    e.preventDefault()
-    if (validateForm()) {
-      // TODO: Implement registration logic
-      console.log('Registration attempt:', formData)
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    if (!validateForm()) return;
+
+    try {
+      // Ici on passe username, email, password dans le bon ordre
+      const data = await registerUser(formData.username, formData.email, formData.password);
+      console.log('Inscription réussie:', data);
+
+      // Rediriger vers la page de connexion après inscription
+      navigate('/login');
+    } catch (err) {
+      setError(err.message || 'Erreur à l’inscription');
     }
-  }
+  };
 
   return (
     <div className="max-w-md mx-auto">
@@ -51,8 +61,8 @@ function Register() {
           <input
             type="text"
             className="w-full px-3 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-primary"
-            value={formData.name}
-            onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+            value={formData.username}
+            onChange={(e) => setFormData({ ...formData, username: e.target.value })}
             required
           />
         </div>
@@ -113,7 +123,7 @@ function Register() {
         </p>
       </form>
     </div>
-  )
+  );
 }
 
-export default Register 
+export default Register;

@@ -4,7 +4,7 @@ function PayPalButton({ amount, onSuccess, onError }) {
   useEffect(() => {
     // Charger le script PayPal
     const script = document.createElement('script')
-    script.src = `https://www.paypal.com/sdk/js?client-id=YOUR_PAYPAL_CLIENT_ID&currency=XOF`
+    script.src = `https://www.paypal.com/sdk/js?client-id=AeqEdDXPxrgDlHtNqk4U31IV43VEFXyWsGsTHSYxooTM7sCIYs4MdiT7YZx0vxsUoaq55llm-EF2pWq6&currency=USD`
     script.async = true
     script.onload = () => {
       if (window.paypal) {
@@ -15,7 +15,7 @@ function PayPalButton({ amount, onSuccess, onError }) {
                 {
                   amount: {
                     value: amount.toString(),
-                    currency_code: 'XOF'
+                    currency_code: 'USD'
                   }
                 }
               ]

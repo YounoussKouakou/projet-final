@@ -1,17 +1,29 @@
-import { useState } from 'react'
-import { Link } from 'react-router-dom'
+import { useState } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
+import { loginUser } from '../services/authMiddleware';
 
 function Login() {
   const [formData, setFormData] = useState({
     email: '',
     password: '',
-  })
+  });
+  const [error, setError] = useState('');
+  const navigate = useNavigate();
 
-  const handleSubmit = (e) => {
-    e.preventDefault()
-    // TODO: Implement login logic
-    console.log('Login attempt:', formData)
-  }
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setError('');
+
+    try {
+      const data = await loginUser(formData.email, formData.password);
+      console.log('Connexion réussie:', data);
+
+      // Exemple : rediriger vers une page protégée après connexion
+      navigate('/dashboard');
+    } catch (err) {
+      setError(err.message || 'Erreur à la connexion');
+    }
+  };
 
   return (
     <div className="max-w-md mx-auto">
@@ -46,6 +58,8 @@ function Login() {
           />
         </div>
 
+        {error && <p className="text-red-500 mb-4">{error}</p>}
+
         <button
           type="submit"
           className="w-full bg-primary text-white py-2 px-4 rounded-md hover:bg-secondary transition-colors"
@@ -61,7 +75,7 @@ function Login() {
         </p>
       </form>
     </div>
-  )
+  );
 }
 
-export default Login 
+export default Login;
