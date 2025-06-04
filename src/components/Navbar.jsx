@@ -23,21 +23,22 @@ function Navbar() {
               to="/"
               className="text-gray-700 hover:text-primary px-3 py-2 rounded-md"
             >
-              Accueil
+             Tableau de bord
             </Link>
             {isAuthenticated && (
               <>
                 <Link
+                  to="/Home"
+                  className="text-gray-700 hover:text-primary px-3 py-2 rounded-md"
+                >
+                   Réserver un espace
+
+                </Link>
+                <Link
                   to="/reservations"
                   className="text-gray-700 hover:text-primary px-3 py-2 rounded-md"
                 >
-                  Mes Réservations
-                </Link>
-                <Link
-                  to="/dashboard"
-                  className="text-gray-700 hover:text-primary px-3 py-2 rounded-md"
-                >
-                  Tableau de bord
+                  Mes réservations
                 </Link>
               </>
             )}

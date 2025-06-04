@@ -19,7 +19,7 @@ function Login() {
       console.log('Connexion réussie:', data);
 
       // Exemple : rediriger vers une page protégée après connexion
-      navigate('/dashboard');
+      navigate('/Home');
     } catch (err) {
       setError(err.message || 'Erreur à la connexion');
     }
