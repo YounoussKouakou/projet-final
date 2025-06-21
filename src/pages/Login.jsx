@@ -1,6 +1,5 @@
 import { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import { loginUser } from '../services/authMiddleware';
 
 function Login() {
   const [formData, setFormData] = useState({
@@ -15,11 +14,11 @@ function Login() {
     setError('');
 
     try {
-      const data = await loginUser(formData.email, formData.password);
-      console.log('Connexion réussie:', data);
+      // Simulation de connexion réussie
+      console.log('Connexion réussie:', formData);
 
-      // Exemple : rediriger vers une page protégée après connexion
-      navigate('/Home');
+      // Rediriger vers la page d'accueil après connexion
+      navigate('/');
     } catch (err) {
       setError(err.message || 'Erreur à la connexion');
     }

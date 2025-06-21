@@ -1,6 +1,5 @@
 import { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import { registerUser } from '../services/authMiddleware';
 
 function Register() {
   const [formData, setFormData] = useState({
@@ -30,14 +29,13 @@ function Register() {
     if (!validateForm()) return;
 
     try {
-      // Ici on passe username, email, password dans le bon ordre
-      const data = await registerUser(formData.username, formData.email, formData.password);
-      console.log('Inscription réussie:', data);
-
+      // Simulation d'inscription réussie
+      console.log('Inscription réussie:', formData);
+      
       // Rediriger vers la page de connexion après inscription
       navigate('/login');
     } catch (err) {
-      setError(err.message || 'Erreur à l’inscription');
+      setError(err.message || 'Erreur à l\'inscription');
     }
   };
 
